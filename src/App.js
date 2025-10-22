@@ -1,9 +1,5 @@
 import './App.css';
-import BlurText from "./components/BlurText";
 import FaultyTerminal from './components/FaultyTerminal';
-import LiquidEther from './components/LiquidEther';
-import Galaxy from './components/Galaxy';
-import DotGrid from './components/DotGrid';
 
 
 function App() {
