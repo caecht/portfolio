@@ -90,8 +90,8 @@ body {
 
 
 .profile-img {
-  width: 400px;
-  height: 600px;
+  width: 340px;
+  height: 500px;
   border-radius: 15px;
   object-fit: cover;
 }
@@ -145,184 +145,105 @@ body {
   cursor: default;
 }
 
-/* Education Card Styles - Add these to your App.css */
-
+/* Education Card Styles */
 .education-card {
-  width: 100%;
-  max-width: 725px;
-  border: 1.1px solid white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin: 2rem auto 0;
-  transition: all 0.3s ease-out;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(226, 185, 255, 0.3);
+  border-radius: 24px;
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: 0 0 40px rgba(88, 28, 135, 0.4), 0 0 60px rgba(88, 28, 135, 0.2);
+  transition: all 0.3s ease;
+  transform: scale(1);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.education-card:hover {
+.education-card-hovered {
   transform: scale(1.05);
-  box-shadow: 0 12px 24px -6px rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 80px rgba(88, 28, 135, 0.4), 0 0 60px rgba(88, 28, 135, 0.2);
+  border: 2px solid rgba(147, 51, 234, 0.6);
 }
 
 .edu-title {
-  font-size: 25px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  margin-bottom: 1.5rem;
+  color: #E9C5FF;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
   margin-top: 0;
 }
 
 .edu-box {
-  background: linear-gradient(to bottom, #D7B1F9, #000000);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 90px;
-  gap: 1.5rem;
-  width: 600px;
-  margin: 0 auto;
-  height: 100px;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .edu-circle {
-  height: 130px;
-  object-fit: cover;
-  padding-top: 20px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
-
 
 .edu-text {
+  color: #ffffff;
   flex: 1;
-  padding-top: 0.5rem;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
 }
 
-.edu-text h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #111827;
-  margin: 0 0 0.25rem 0;
-  padding-left: 40px;
+.edu-info-container {
+  min-width: 300px;
+}
 
+.edu-info-container h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.edu-info-container p {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  color: #cccccc;
 }
 
 .edu-text p {
-  font-size: 12px;
-  padding-left: 30px;
-  font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 1rem 0;
+  font-size: 14px;
+  margin: 0 0 0;
+  color: #cccccc;
 }
 
-.edu-text ul {
-  list-style: none;
-  padding: 0;
+.edu-gpa {
+  font-size: 14px;
+  color: #ffffff;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
 }
 
-.edu-text li {
-  font-size: 9px;
-  color: #111827;
-  line-height: 1.6;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .education-card {
-    padding: 1rem;
-  }
-
-  .edu-title {
-    font-size: 20px;
-    margin-bottom: 1rem;
-  }
-
-  .edu-box {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .edu-circle {
-    width: 4rem;
-    height: 4rem;
-    margin: 0 auto;
-  }
-
-  .edu-text h4 {
-    font-size: 14px;
-  }
-
-  .edu-text p {
-    font-size: 10px;
-  }
-
-  .edu-text li {
-    font-size: 8px;
-  }
-}
-
-
-/* gpt end */
-
-
-
-
-
-
-
-.about-content {
-  flex: 1;
-}
-
-.about-content h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.about-content p {
+/* Resume Button */
+.resume-button {
+  background: transparent;
+  border: 2px solid #E2B9FF4d;
+  border-radius: 12px;
+  color: #ffffff;
   font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  opacity: 0.9;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 16px 48px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  margin: 30px auto 0;
+  width: fit-content;
+  box-shadow: 0 0 20px rgba(88, 28, 135, 0.4), 0 0 60px rgba(88, 28, 135, 0.2);
+  display: block;
 }
 
-.education {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 30px;
-  border-radius: 15px;
+.resume-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(88, 28, 135, 0.4), 0 0 60px rgba(88, 28, 135, 0.2);
 }
-
-.education h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.education-item h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.education-item p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.education-item ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.education-item li {
-  font-size: 14px;
-  margin-bottom: 8px;
-  opacity: 0.8;
-}
-

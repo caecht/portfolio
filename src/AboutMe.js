@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import profileImg from "./profile.jpg"; // replace with your image path
 import uniLogo from "./uniLogo.png"; // replace with your image path
 
 function AboutMe() {
+  const [isCardHovered, setIsCardHovered] = useState(false);
+
   return (
     <>
       <div className="title-container">
@@ -47,21 +49,30 @@ function AboutMe() {
               ))}
             </div>
 
-            <div className="education-card">
+            <div 
+              className={`education-card ${isCardHovered ? 'education-card-hovered' : ''}`}
+              onMouseEnter={() => setIsCardHovered(true)}
+              onMouseLeave={() => setIsCardHovered(false)}
+            >
               <h3 className="edu-title">Education</h3>
               <div className="edu-box">
-                <img src={uniLogo} alt="FEU" className="edu-circle" />
+                <img src={uniLogo} alt="FEU Logo" className="edu-circle" />
                 <div className="edu-text">
-                  <h4>FEU Institute Of Technology</h4>
-                  <p>4th Year | Graduating October 2026</p>
-                  <ul>
-                    <li>University Scholar [2022 - 2024] | Top Performing Student [2022 - 2023]</li>
-                    <li>GPA: 3.5 / 4.0</li>
-                  </ul>
+                  <div className="edu-info-container">
+                    <h4>FEU Institute Of Technology</h4>
+                    <p>4th Year | Graduating October 2026</p>
+                  </div>
+                  <div className="edu-achievements">
+                      <p>• Top Performing Student [2022-2023]</p>
+                      <p>• University Scholar [2022 - 2024]</p>
+                  </div>
                 </div>
               </div>
             </div>
 
+            <button className="resume-button">
+              MY RESUME
+            </button>
 
           </div>
         </div>

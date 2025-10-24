@@ -1,22 +1,46 @@
 import './App.css';
 import AboutMe from './AboutMe';
 import FaultyTerminal from './components/FaultyTerminal';
+import { useState, useEffect, useRef } from 'react';
 
 
 function App() {
+  const [isPaused, setIsPaused] = useState(false);
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPaused(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    const currentRef = heroRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
  return (
     <>
       {/* Hero Section with Terminal */}
-      <div id="home" style={{ width: '100%', height: '100vh', position: 'relative' }}>
+      <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative' }}>
         <FaultyTerminal
-          scale={2.5}
+          scale={1.8}
           gridMul={[2, 1]}
           digitSize={1.2}
-          timeScale={0.4}
-          pause={false}
-          scanlineIntensity={0.5}
-          glitchAmount={1}
-          flickerAmount={1}
+          timeScale={0.8}
+          pause={isPaused}
+          scanlineIntensity={0.3}
+          glitchAmount={0.5}
+          flickerAmount={0.5}
           noiseAmp={1}
           chromaticAberration={0}
           dither={0}
