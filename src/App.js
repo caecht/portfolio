@@ -1,7 +1,11 @@
 import './App.css';
 import AboutMe from './AboutMe';
+import Experience from './Experience';
+import Projects from './Projects';
+import ContactMe from './contactMe';
 import FaultyTerminal from './components/FaultyTerminal';
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-scroll';
 
 
 function App() {
@@ -30,8 +34,16 @@ function App() {
 
  return (
     <>
+      <nav className="navbar">
+        <Link to="home" smooth={true} duration={500} className="navbar-link">Home</Link>
+        <Link to="about" smooth={true} duration={500} className="navbar-link">About</Link>
+        <Link to="experience" smooth={true} duration={500} className="navbar-link">Experience</Link>
+        <Link to="projects" smooth={true} duration={500} className="navbar-link">Projects</Link>
+        <Link to="contact" smooth={true} duration={500} className="navbar-link">Contact</Link>
+      </nav>
+
       {/* Hero Section with Terminal */}
-      <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative' }}>
+      {/* <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative' }}>
         <FaultyTerminal
           scale={1.8}
           gridMul={[2, 1]}
@@ -46,19 +58,19 @@ function App() {
           dither={0}
           curvature={0.14}
           tint="#d2a1f2"
-          mouseReact={true}
+          mouseReact={false}
           mouseStrength={0.5}
           pageLoadAnimation={true}
           brightness={0.6}
         />
 
-        <nav className="navbar">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="center-text">
+          Hi! I'm Chelsea!
+        </div>
+      </div> */}
 
+      {/* Placeholder black screen */}
+      <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative', backgroundColor: '#05000f' }}>
         <div className="center-text">
           Hi! I'm Chelsea!
         </div>
@@ -68,6 +80,27 @@ function App() {
       <div id="about">
         <AboutMe />
       </div>
+
+      {/* Experience Section */}
+      <div id="experience">
+        <Experience />
+      </div>
+
+      {/* Projects Section */}
+      <div id="projects">
+        <Projects />
+      </div>
+
+      {/* Contact Section */}
+      <div id="contact">
+        <ContactMe />
+      </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>݁₊ ⊹ . ݁˖ . ݁·</p>
+      </footer>
+
     </>
   );
 }

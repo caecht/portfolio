@@ -6,6 +6,10 @@ import uniLogo from "./uniLogo.png"; // replace with your image path
 function AboutMe() {
   const [isCardHovered, setIsCardHovered] = useState(false);
 
+  const handleResumeClick = () => {
+    window.open('https://drive.google.com/file/d/1l_K7IukOX69GmHzLDLpNH10FTQ3OU0Ro/view?usp=sharing', '_blank');
+  };
+
   return (
     <>
       <div className="title-container">
@@ -30,18 +34,23 @@ function AboutMe() {
             <div className="skills-grid">
               {[
                 "Python",
-                "React",
-                "Firebase",
-                "MongoDB",
-                "TensorFlow",
-                "Flet",
+                "Java",
                 "C++",
-                "Python",
+                "HTML",
+                "CSS",
                 "React",
-                "Firebase",
-                "MongoDB",
+                "JavaScript",
+                "Flet",
+                "Flask",
                 "TensorFlow",
+                "Android Studio",
+                "Figma",
+                "Canva",
+                "MS Excel",
+                "Project Management",
+                "Machine Learning",
                 
+                "Prototyping"
               ].map((skill, i) => (
                 <div key={i} className="skill-box">
                   {skill}
@@ -70,7 +79,7 @@ function AboutMe() {
               </div>
             </div>
 
-            <button className="resume-button">
+            <button className="resume-button" onClick={handleResumeClick}>
               MY RESUME
             </button>
 
