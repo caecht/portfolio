@@ -55,7 +55,7 @@ function ContactMe() {
           </div>
 
           <p className="contact-description">
-            I'm currently seeking internship opportunities starting December 2026. Feel free to reach out if you think I'd be a great fit for your team!
+            I'm currently seeking internship opportunities starting December 2025 or January 2026. Feel free to reach out if you think I'd be a great fit for your team!
           </p>
 
           <button className="action-button" onClick={handleResumeClick}>

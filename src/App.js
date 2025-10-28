@@ -156,7 +156,7 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>݁₊ ⊹ . ݁˖ . ݁· © 2026 Chelsea Creer. All Rights Reserved.</p>
+        <p>݁₊ ⊹ . ݁˖ . ݁· © 2025 Chelsea Creer. All Rights Reserved.</p>
       </footer>
     </>
   );
