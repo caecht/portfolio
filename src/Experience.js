@@ -126,7 +126,7 @@ function Experience() {
               <div className="timeline-line"></div>
               {index !== experiences.length - 1 && <div className="timeline-line"></div>}
               
-              <div className="experience-card">
+              <div className="experience-card scroll-card">
                 <div className="card-header">
                   <div className="card-title-section">
                     <h3 className="card-title">{exp.title}</h3>
@@ -160,7 +160,7 @@ function Experience() {
         ) : (
           <div className="certifications-grid">
             {certifications.map((cert) => (
-              <div key={cert.id} className="certification-card">
+              <div key={cert.id} className="certification-card scroll-card">
                 <div className="cert-header">
                   <div className="cert-icon-box">
                     <img src={cert.logo} alt={cert.issuer} className="cert-logo" />

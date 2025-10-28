@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import profileImg from "./profile.jpg"; // replace with your image path
 import uniLogo from "./uniLogo.png"; // replace with your image path
 
 function AboutMe() {
   const [isCardHovered, setIsCardHovered] = useState(false);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const profileRef = useRef(null);
 
   const handleResumeClick = () => {
     window.open('https://drive.google.com/file/d/1l_K7IukOX69GmHzLDLpNH10FTQ3OU0Ro/view?usp=sharing', '_blank');
+  };
+
+  const handleProfileMouseMove = (e) => {
+    if (!profileRef.current) return;
+
+    const rect = profileRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+
+    const distX = (mouseX / (rect.width / 2)) * 8;
+    const distY = -(mouseY / (rect.height / 2)) * 8;
+
+    setRotateX(distY);
+    setRotateY(distX);
+  };
+
+  const handleProfileMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
   };
 
   return (
@@ -20,7 +45,18 @@ function AboutMe() {
         <div className="about-content">
           
           <div className="profile-section">
-            <img src={profileImg} alt="Chelsea Creer" className="profile-img" />
+            <img 
+              ref={profileRef}
+              src={profileImg} 
+              alt="Chelsea Creer" 
+              className="profile-img"
+              onMouseMove={handleProfileMouseMove}
+              onMouseLeave={handleProfileMouseLeave}
+              style={{
+                transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            />
           </div>
 
           <div className="info-section">
@@ -73,7 +109,7 @@ function AboutMe() {
                   </div>
                   <div className="edu-achievements">
                       <p>• Top Performing Student [2022-2023]</p>
-                      <p>• University Scholar [2022 - 2024]</p>
+                      <p>• University Scholar [2022 - 2025]</p>
                   </div>
                 </div>
               </div>

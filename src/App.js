@@ -3,10 +3,9 @@ import AboutMe from './AboutMe';
 import Experience from './Experience';
 import Projects from './Projects';
 import ContactMe from './contactMe';
-import FaultyTerminal from './components/FaultyTerminal';
+import Aurora from './components/Aurora';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-scroll';
-
 
 function App() {
   const [isPaused, setIsPaused] = useState(false);
@@ -32,7 +31,72 @@ function App() {
     };
   }, []);
 
- return (
+  // Scroll animation setup
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.25,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // For regular sections
+          if (entry.target.classList.contains('scroll-animate')) {
+            entry.target.classList.add('animate-in');
+          }
+          // For project cards - each card animates when it comes into view
+          if (entry.target.classList.contains('project-card')) {
+            entry.target.classList.add('animate-in');
+          }
+          // For scroll cards (experience and certification cards)
+          if (entry.target.classList.contains('scroll-card')) {
+            entry.target.classList.add('animate-in');
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Function to observe all scroll elements
+    const observeAllElements = () => {
+      // Observe all scroll-animate sections
+      const sections = document.querySelectorAll('.scroll-animate');
+      sections.forEach(section => observer.observe(section));
+
+      // Observe individual project cards
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach(card => observer.observe(card));
+
+      // Observe scroll cards (experience and certification cards)
+      const scrollCards = document.querySelectorAll('.scroll-card');
+      scrollCards.forEach(card => observer.observe(card));
+    };
+
+    // Initial observation
+    observeAllElements();
+
+    // Watch for DOM changes (for dynamically rendered certification cards)
+    const mutationObserver = new MutationObserver(() => {
+      // Re-observe any new scroll cards
+      const scrollCards = document.querySelectorAll('.scroll-card:not(.observed)');
+      scrollCards.forEach(card => {
+        card.classList.add('observed');
+        observer.observe(card);
+      });
+    });
+
+    mutationObserver.observe(document.body, {
+      subtree: true,
+      childList: true
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, []);
+
+  return (
     <>
       <nav className="navbar">
         <Link to="home" smooth={true} duration={500} className="navbar-link">Home</Link>
@@ -42,42 +106,36 @@ function App() {
         <Link to="contact" smooth={true} duration={500} className="navbar-link">Contact</Link>
       </nav>
 
-      {/* Hero Section with Terminal */}
-      {/* <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative' }}>
-        <FaultyTerminal
-          scale={1.8}
-          gridMul={[2, 1]}
-          digitSize={1.2}
-          timeScale={0.8}
-          pause={isPaused}
-          scanlineIntensity={0.3}
-          glitchAmount={0.5}
-          flickerAmount={0.5}
-          noiseAmp={1}
-          chromaticAberration={0}
-          dither={0}
-          curvature={0.14}
-          tint="#d2a1f2"
-          mouseReact={false}
-          mouseStrength={0.5}
-          pageLoadAnimation={true}
-          brightness={0.6}
+            {/* Hero Section with Aurora Background */}
+      <div 
+        id="home" 
+        ref={heroRef} 
+        style={{ 
+          width: '100%', 
+          height: '100vh', 
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Aurora
+          colorStops={["#960df2", "#ffb3fc", "#5227ff"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
         />
-
         <div className="center-text">
           Hi! I'm Chelsea!
         </div>
-      </div> */}
-
-      {/* Placeholder black screen */}
-      <div id="home" ref={heroRef} style={{ width: '100%', height: '100vh', position: 'relative', backgroundColor: '#05000f' }}>
-        <div className="center-text">
-          Hi! I'm Chelsea!
-        </div>
+        <Link to="about" smooth={true} duration={500} className="hero-button">
+          Get to know me
+        </Link>
       </div>
 
       {/* About Section */}
-      <div id="about">
+      <div id="about" className="scroll-animate">
         <AboutMe />
       </div>
 
@@ -92,18 +150,16 @@ function App() {
       </div>
 
       {/* Contact Section */}
-      <div id="contact">
+      <div id="contact" className="scroll-animate">
         <ContactMe />
       </div>
 
       {/* Footer */}
       <footer className="footer">
-        <p>݁₊ ⊹ . ݁˖ . ݁·</p>
+        <p>݁₊ ⊹ . ݁˖ . ݁· Chelsea Creer. All Rights Reserved.</p>
       </footer>
-
     </>
   );
 }
-
 
 export default App;
