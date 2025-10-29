@@ -30,7 +30,7 @@ function Projects() {
       title: "CuisiNER",
       subtitle: "Filipino Food Named Entity Recognition System",
       role: "Solo Developer",
-      image: "cuisinerImage",
+      image: "https://res.cloudinary.com/djm2qhi9f/video/upload/v1761720906/cuisiNER_p1qgbd.mp4",
       link: "https://github.com/caecht/cuisiNER",
       skills: ["Python", "NLP", "Named Entity Recognition", "spaCy", "Streamlit", "Data Annotation"],
       description: "An NLP system that identifies and extracts Filipino food names from text. Recognizes 67 Filipino dishes with a Streamlit web interface for real-time text processing."
