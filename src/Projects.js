@@ -20,7 +20,7 @@ function Projects() {
       title: "MoodSnaps",
       subtitle: "AI-Powered Emotion Recognition Photobooth",
       role: "Fullstack Developer",
-      image: "moodsnapImage",
+      image: "https://res.cloudinary.com/djm2qhi9f/image/upload/v1763267929/photo_2025-11-16_12-38-38_r3rfh6.jpg",
       link: "https://github.com/caecht/moodSnaps",
       skills: ["Flask", "JavaScript", "TensorFlow/Keras", "Computer Vision", "Python"],
       description: "An emotion recognition photobooth that detects facial expressions in real-time using TensorFlow's fer2013 model. Captures photos automatically when emotions are consistently detected."

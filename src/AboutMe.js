@@ -10,7 +10,7 @@ function AboutMe() {
   const profileRef = useRef(null);
 
   const handleResumeClick = () => {
-    window.open('https://drive.google.com/file/d/1l_K7IukOX69GmHzLDLpNH10FTQ3OU0Ro/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1aB-jd_idV-6lwgxTptj0tI3vP7W_nLiy/view?usp=sharing', '_blank');
   };
 
   const handleProfileMouseMove = (e) => {
